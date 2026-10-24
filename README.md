@@ -1,22 +1,22 @@
 # e-cordel
 
-Site institucional e Wiki do [e-cordel](https://www.ecordel.com.br), um projeto voluntário que preserva e divulga a literatura de cordel em formato digital.
+Institutional website and Wiki for [e-cordel](https://www.ecordel.com.br), a volunteer project that preserves and promotes cordel literature in digital format.
 
-O site é estático, construído com [Docusaurus](https://docusaurus.io/) e publicado por FTPS. A plataforma de leitura de cordéis continua disponível em [ler.ecordel.com.br](https://ler.ecordel.com.br/).
+The site is static, built with [Docusaurus](https://docusaurus.io/). The cordel reading platform remains available at [ler.ecordel.com.br](https://ler.ecordel.com.br/).
 
-## Requisitos
+## Requirements
 
-- Node.js 22 ou posterior
+- Node.js 22 or later
 - npm
 
-## Desenvolvimento
+## Development
 
 ```sh
 npm install
 npm start
 ```
 
-O servidor local abre em `http://localhost:3000`. Para gerar uma versão de produção e verificar links/conteúdo:
+The local server starts at `http://localhost:3000`. To generate a production build and verify links/content:
 
 ```sh
 npm run typecheck
@@ -24,27 +24,26 @@ npm run build
 npm run serve
 ```
 
-## Conteúdo e ativos
+## Content and assets
 
-- Páginas institucionais: `src/pages/`
+- Institutional pages: `src/pages/`
 - Wiki: `docs/`
-- Ordem e categorias da Wiki: `sidebars.ts`
-- Imagens, ícones e documentos migrados: `static/img/media/`
-- Configuração de SEO, navegação, sitemap e pesquisa local: `docusaurus.config.ts`
+- Wiki order and categories: `sidebars.ts`
+- Images, icons, and migrated documents: `static/img/media/`
+- SEO, navigation, sitemap, and local search configuration: `docusaurus.config.ts`
 
-Ao adicionar uma página, use Markdown/MDX, mantenha texto alternativo para imagens significativas e prefira ativos locais em `static/img/media/`. As rotas históricas foram preservadas; não as altere sem adicionar o redirecionamento correspondente no host.
+When adding a page, use Markdown/MDX, include alt text for meaningful images, and prefer local assets in `static/img/media/`. Historical routes have been preserved; do not change them without adding the corresponding redirect on the host.
 
-## Publicação
+## Deployment
 
-`.github/workflows/deploy.yml` executa em pushes para `main` e manualmente por `workflow_dispatch`. O fluxo instala dependências com `npm ci`, constrói `build/` e envia apenas esse diretório por **FTPS** para `/public_html/`.
+`.github/workflows/deploy.yml` runs on pushes to `main` and can also be triggered manually via `workflow_dispatch`. The workflow installs dependencies with `npm ci`, builds `build/`, and uploads only that directory via **FTPS** to `/public_html/`.
 
-Configure estes segredos no repositório antes da primeira publicação:
+Configure these repository secrets before the first deployment:
 
-| Segredo | Descrição |
+| Secret | Description |
 | --- | --- |
-| `FTPS_SERVER` | Hostname do servidor FTPS |
-| `FTPS_USERNAME` | Usuário FTPS |
-| `FTPS_PASSWORD` | Senha FTPS |
-| `FTPS_PORT` | Porta FTPS opcional; usa `21` quando ausente |
+| `FTPS_SERVER` | FTPS server hostname |
+| `FTPS_USERNAME` | FTPS username |
+| `FTPS_PASSWORD` | FTPS password |
 
-Nunca adicione essas credenciais a arquivos versionados, variáveis públicas do Docusaurus ou logs de CI.
+Never add these credentials to version-controlled files, public Docusaurus variables, or CI logs.
